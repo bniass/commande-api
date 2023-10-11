@@ -14,8 +14,8 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:54320/commande-bd?currentSchema=commande-api&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     #url: jdbc:postgresql://localhost:5432/postgres?currentSchema=commande&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
-    username: postgres
-    password: Mouhamed1
+    username: myowner
+    password: password
     #username: postgres
     #password: Mouhamed1
     driver-class-name: org.postgresql.Driver
