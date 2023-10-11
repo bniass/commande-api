@@ -1,0 +1,67 @@
+version: '3.7'
+
+services:
+  app:
+    image: 'commande-api:latest'
+    build:
+      context: .
+    ports:
+      - "8500:8282"
+    networks:
+      - commande-api-network
+    depends_on:
+      - db-postgresql
+      - keycloak
+
+  db-postgresql:
+    image: 'postgres:13.1-alpine'
+    container_name: dbpostgresql
+    restart: always
+    ports:
+      - "54320:5432"
+    networks:
+      - commande-api-network
+    environment:
+      POSTGRES_USER: myowner
+      POSTGRES_PASSWORD: password
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    restart: always
+    networks:
+      - commande-api-network
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: bniass@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  keycloak:
+    image: jboss/keycloak:latest
+    environment:
+      #KEYCLOAK_USER: admin
+      #KEYCLOAK_PASSWORD: admin
+      DB_VENDOR: POSTGRES
+      DB_ADDR: dbpostgresql
+      DB_DATABASE: keycloak
+      DB_USER: myowner
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+    networks:
+      - commande-api-network
+    ports:
+      - "8989:8080"
+    depends_on:
+      - db-postgresql
+
+volumes:
+  pgadmin-data:
+  local_pgdata:
+
+networks:
+  commande-api-network:

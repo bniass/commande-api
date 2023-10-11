@@ -12,7 +12,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
-    url: jdbc:postgresql://dbpostgresql:5432/commande-bd?currentSchema=commande-api&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    url: jdbc:postgresql://localhost:54320/commande-bd?currentSchema=commande-api&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     #url: jdbc:postgresql://localhost:5432/postgres?currentSchema=commande&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: postgres
     password: Mouhamed1
@@ -31,7 +31,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://keycloak:8080/auth/realms/order-app-realm
+          issuer-uri: http://localhost:8989/auth/realms/order-app-realm
           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
 jwt:
   auth:
