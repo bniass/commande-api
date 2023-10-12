@@ -12,7 +12,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
   datasource:
-    url: jdbc:postgresql://dbpostgresql:5432/commande-bd?currentSchema=commande-api&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    url: jdbc:postgresql://localhost:5432/commande-bd?currentSchema=commande-api&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     #url: jdbc:postgresql://localhost:5432/postgres?currentSchema=commande&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
     username: myowner
     password: password
