@@ -1,17 +1,17 @@
 version: '3.7'
 
 services:
-  app:
-    image: 'commande-api:latest'
-    build:
-      context: .
-    ports:
-      - "8500:8282"
-    networks:
-      - commande-api-network
-    depends_on:
-      - db-postgresql
-      - keycloak
+  #app:
+   # image: 'commande-api:latest'
+   # build:
+   #   context: .
+   # ports:
+    #  - "8500:8282"
+    #networks:
+     # - commande-api-network
+    #depends_on:
+    #  - db-postgresql
+    #  - keycloak
 
   db-postgresql:
     image: 'postgres:13.1-alpine'
@@ -44,8 +44,8 @@ services:
   keycloak:
     image: jboss/keycloak:latest
     environment:
-      #KEYCLOAK_USER: admin
-      #KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
       DB_VENDOR: POSTGRES
       DB_ADDR: dbpostgresql
       DB_DATABASE: keycloak
